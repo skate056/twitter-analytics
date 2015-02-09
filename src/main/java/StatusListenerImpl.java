@@ -27,8 +27,7 @@ public class StatusListenerImpl implements StatusListener {
 //        System.out.println("@" + screenName + " /  ==> " + text);
         processTweet(status);
         if (tweets.size() % 100 == 0) {
-            System.out.println("Tweets size = " + tweets.size());
-            System.out.println("Tweets Count = " + tweetWordCount);
+            System.out.println("Tweets size = " + tweets.size() + ", Tweets Count = " + tweetWordCount);
         }
     }
 

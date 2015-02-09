@@ -4,9 +4,22 @@ import org.springframework.data.mongodb.core.MongoOperations;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class App {
+    public static Set<String> tagsToTrack() {
+        Set<String> tagsToTrack = new HashSet<>();
+        tagsToTrack.add("aap");
+        tagsToTrack.add("#aap");
+        tagsToTrack.add("bjp");
+        tagsToTrack.add("#bjp");
+        tagsToTrack.add("congress");
+        tagsToTrack.add("#congress");
+        return tagsToTrack;
+    }
+
     public static void main(String[] args) {
         if (args.length < 1) {
             System.out.println("Usage: java twitter4j.examples.PrintFilterStream [follow(comma separated numerical user ids)] [track(comma separated filter terms)]");
@@ -23,7 +36,7 @@ public class App {
 
     private static Parameter parseParams(String[] args) {
         List<Long> follow = new ArrayList<>();
-        List<String> track = new ArrayList<>();
+        Set<String> track = tagsToTrack();
         for (String arg : args) {
             if (isNumericalArgument(arg)) {
                 for (String id : arg.split(",")) {
